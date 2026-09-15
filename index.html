@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Renderer — 3D Artist & Animator</title>
+<meta name="description" content="Portfolio of Alex Renderer, 3D artist and animator specializing in character design, environment art, product visualization, and motion graphics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230c0c0c'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='sans-serif' fill='%23e8a849'>3D</text></svg>">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">AR<span class="logo-accent">.</span></a>
+    <ul class="nav-links">
+      <li><a href="#work" data-nav>Work</a></li>
+      <li><a href="#about" data-nav>About</a></li>
+      <li><a href="#resources" data-nav>Resources</a></li>
+      <li><a href="#contact" data-nav>Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- FALLING STARS (global) -->
+<canvas class="stars-canvas" id="starsCanvas"></canvas>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-canvas-wrap">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">3D Artist &amp; Animator</p>
+    <h1 class="hero-name">Alex Renderer</h1>
+    <p class="hero-title">Bringing shapes to life through light, form, and motion.</p>
+    <div class="hero-ctas">
+      <a href="#work" class="btn btn-primary">Explore Work</a>
+      <button class="btn btn-ghost" id="heroReelBtn">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg>
+        Watch Reel
+      </button>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- SHOWREEL MODAL -->
+<div class="modal-overlay" id="reelModal" hidden>
+  <div class="modal modal-reel">
+    <button class="modal-close" data-close>&times;</button>
+    <div class="modal-reel-header">
+      <h2 class="modal-title">Showreel 2026</h2>
+      <p class="modal-sub">Selected work across characters, environments, product viz, and motion graphics.</p>
+    </div>
+    <div class="modal-reel-video">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=1&rel=0" loading="lazy" allow="autoplay; encrypted-media" allowfullscreen title="Showreel"></iframe>
+    </div>
+    <div class="modal-reel-projects">
+      <p class="reel-projects-label">Featured in this reel</p>
+      <ul class="reel-project-list">
+        <li>Ethereal Guardian — Character Design</li>
+        <li>Neon Cityscape — Environment Art</li>
+        <li>TechLens Pro — Product Visualization</li>
+        <li>Fluid Dreams — Motion Graphics</li>
+        <li>Mythical Forest — Personal Project</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- WORK / PROJECT GRID -->
+<section class="work-section" id="work">
+  <div class="section-inner">
+    <header class="section-header">
+      <p class="section-eyebrow">Portfolio</p>
+      <h2 class="section-title">Selected Work</h2>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Work</button>
+        <button class="filter-btn" data-filter="character">Character Design</button>
+        <button class="filter-btn" data-filter="environment">Environment Art</button>
+        <button class="filter-btn" data-filter="product">Product Visualization</button>
+        <button class="filter-btn" data-filter="motion">Motion Graphics</button>
+        <button class="filter-btn" data-filter="personal">Personal Projects</button>
+      </div>
+    </div>
+    <div class="project-grid" id="projectGrid"></div>
+  </div>
+</section>
+
+<!-- PROJECT DETAIL MODAL -->
+<div class="modal-overlay" id="projectModal" hidden>
+  <div class="modal modal-project">
+    <button class="modal-close" data-close>&times;</button>
+    <div class="modal-project-hero" id="projectHero"></div>
+    <div class="modal-project-body">
+      <div class="modal-project-meta">
+        <span class="project-year" id="pYear"></span>
+        <span class="project-client" id="pClient"></span>
+      </div>
+      <h2 class="modal-project-title" id="pTitle"></h2>
+      <p class="modal-project-category" id="pCategory"></p>
+
+      <div class="software-row" id="pSoftware"></div>
+
+      <div class="role-tags" id="pRoles"></div>
+
+      <div class="project-content" id="pContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section-inner about-layout">
+    <div class="about-visual">
+      <div class="about-avatar-wrap">
+        <img src="https://picsum.photos/seed/alexavatar/400/400" alt="Alex Renderer portrait" class="about-avatar" loading="lazy">
+        <div class="about-avatar-ring"></div>
+      </div>
+    </div>
+    <div class="about-text">
+      <p class="section-eyebrow">About</p>
+      <h2 class="section-title">The artist behind the renders.</h2>
+      <div class="about-body">
+        <p>I'm Alex — a 3D artist and animator based in Bogotá, Colombia. I specialize in character design, environment art, and product visualization, with a strong focus on photorealistic rendering and expressive motion.</p>
+        <p>My background is in industrial design, which gave me a foundation in form, proportion, and materials. Over the past 6 years I've worked with animation studios, ad agencies, and independent clients to create everything from stylized characters to photoreal product renders.</p>
+        <p>I believe great 3D art is about storytelling — every shape, light, and texture should serve the narrative.</p>
+      </div>
+
+      <div class="about-columns">
+        <div class="about-col">
+          <h3 class="about-col-title">Software</h3>
+          <ul class="about-list">
+            <li><span class="sw-name">Blender</span><span class="sw-bar"><span class="sw-fill" style="width:95%"></span></span></li>
+            <li><span class="sw-name">Maya</span><span class="sw-bar"><span class="sw-fill" style="width:80%"></span></span></li>
+            <li><span class="sw-name">Cinema 4D</span><span class="sw-bar"><span class="sw-fill" style="width:75%"></span></span></li>
+            <li><span class="sw-name">ZBrush</span><span class="sw-bar"><span class="sw-fill" style="width:70%"></span></span></li>
+            <li><span class="sw-name">Substance 3D Painter</span><span class="sw-bar"><span class="sw-fill" style="width:85%"></span></span></li>
+            <li><span class="sw-name">Unreal Engine 5</span><span class="sw-bar"><span class="sw-fill" style="width:60%"></span></span></li>
+            <li><span class="sw-name">After Effects</span><span class="sw-bar"><span class="sw-fill" style="width:75%"></span></span></li>
+            <li><span class="sw-name">Photoshop</span><span class="sw-bar"><span class="sw-fill" style="width:85%"></span></span></li>
+          </ul>
+        </div>
+        <div class="about-col">
+          <h3 class="about-col-title">Hardware</h3>
+          <ul class="about-specs">
+            <li><span>CPU</span> AMD Ryzen 9 7950X</li>
+            <li><span>GPU</span> NVIDIA RTX 4090 24GB</li>
+            <li><span>RAM</span> 64 GB DDR5 6000MHz</li>
+            <li><span>Storage</span> 2 TB NVMe SSD</li>
+            <li><span>Monitor</span> Dell UltraSharp 4K 32"</li>
+            <li><span>Tablet</span> Wacom Intuos Pro M</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="about-process">
+        <h3 class="about-col-title">Process</h3>
+        <div class="process-timeline">
+          <div class="process-step">
+            <div class="ps-num">01</div>
+            <div class="ps-body">
+              <div class="ps-head">
+                <span class="ps-title">Reference &amp; Concept</span>
+                <span class="ps-line"></span>
+              </div>
+              <p class="ps-desc">Gather references, mood boards, and define the visual direction.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="ps-num">02</div>
+            <div class="ps-body">
+              <div class="ps-head">
+                <span class="ps-title">Blockout</span>
+                <span class="ps-line"></span>
+              </div>
+              <p class="ps-desc">Establish composition, scale, and basic forms in 3D.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="ps-num">03</div>
+            <div class="ps-body">
+              <div class="ps-head">
+                <span class="ps-title">Modeling &amp; Sculpting</span>
+                <span class="ps-line"></span>
+              </div>
+              <p class="ps-desc">High-detail modeling or digital sculpting depending on the subject.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="ps-num">04</div>
+            <div class="ps-body">
+              <div class="ps-head">
+                <span class="ps-title">Texturing &amp; Materials</span>
+                <span class="ps-line"></span>
+              </div>
+              <p class="ps-desc">PBR texturing, material authoring, and surface detail.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="ps-num">05</div>
+            <div class="ps-body">
+              <div class="ps-head">
+                <span class="ps-title">Lighting &amp; Rendering</span>
+                <span class="ps-line"></span>
+              </div>
+              <p class="ps-desc">Light the scene, set up cameras, and render final passes.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="ps-num">06</div>
+            <div class="ps-body">
+              <div class="ps-head">
+                <span class="ps-title">Post &amp; Delivery</span>
+                <span class="ps-line"></span>
+              </div>
+              <p class="ps-desc">Compositing, color grading, and final delivery in required formats.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-learning">
+        <h3 class="about-col-title">Currently exploring</h3>
+        <p>Real-time rendering with Unreal Engine 5, procedural workflows with Geometry Nodes, and stylized character animation for game pipelines.</p>
+      </div>
+
+      <div class="about-availability">
+        <span class="avail-badge avail-freelance">Freelance</span>
+        <span class="avail-badge avail-fulltime">Open to Full-time</span>
+        <span class="avail-badge avail-collab">Collaborations</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="resources-section" id="resources">
+  <div class="section-inner">
+    <header class="section-header">
+      <p class="section-eyebrow">Resources</p>
+      <h2 class="section-title">Free assets &amp; notes</h2>
+    </header>
+    <div class="resource-grid">
+      <a href="#" class="resource-card" data-resource>
+        <div class="resource-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M12 2a10 10 0 0 1 10 10c0 5-4 9-10 9S2 17 2 12 7 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3 class="resource-title">Free 3D Models</h3>
+        <p class="resource-desc">Downloadable Blender assets: props, materials, and environment elements released under CC-BY.</p>
+        <span class="resource-link">Browse models &rarr;</span>
+      </a>
+      <a href="#" class="resource-card" data-resource>
+        <div class="resource-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+        <h3 class="resource-title">Tutorial Links</h3>
+        <p class="resource-desc">Curated list of tutorials and references I've found useful — lighting, texturing, and animation.</p>
+        <span class="resource-link">View tutorials &rarr;</span>
+      </a>
+      <a href="#" class="resource-card" data-resource>
+        <div class="resource-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3 class="resource-title">Blog &amp; Techniques</h3>
+        <p class="resource-desc">Write-ups on my workflow: PBR material breakdowns, lighting setups, and render optimization tips.</p>
+        <span class="resource-link">Read posts &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner contact-layout">
+    <div class="contact-text">
+      <p class="section-eyebrow">Get in touch</p>
+      <h2 class="section-title">Let's create something.</h2>
+      <p>Available for freelance commissions, full-time roles, and creative collaborations. Reach out for project inquiries, rate sheets, or just to say hello.</p>
+      <a href="#" class="btn btn-primary" id="rateSheetBtn">Download Rate Sheet</a>
+    </div>
+    <div class="contact-details">
+      <a href="mailto:alex@renderer.studio" class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+        <span>alex@renderer.studio</span>
+      </a>
+      <a href="https://artstation.com" target="_blank" rel="noopener" class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M10 13.5c.8.9 2 1.5 3.5 1.5 2.5 0 4.5-2 4.5-5.5a3.5 3.5 0 0 0-2.5-3.5c-1.5 1-3.5 3-3.5 3a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1z"/></svg>
+        <span>ArtStation</span>
+      </a>
+      <a href="https://behance.net" target="_blank" rel="noopener" class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 13h10M7 17h7M7 9h5"/></svg>
+        <span>Behance</span>
+      </a>
+      <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M15 21l-5-3-5 3M8 9v6M10 6h4"/></svg>
+        <span>Instagram</span>
+      </a>
+      <a href="https://discord.com" target="_blank" rel="noopener" class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><path d="M21 6h-2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2l-1 3h-7v8h8l1-3h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2zM5 12h3M5 12v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4M5 12a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 0-2-2z"/></svg>
+        <span>Discord</span>
+      </a>
+      <div class="commission-status">
+        <span class="status-dot status-open"></span>
+        <span>Commission status: <strong>Open for new work</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-copy">&copy; 2026 Alex Renderer. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://artstation.com" target="_blank" rel="noopener" aria-label="ArtStation">ArtStation</a>
+      <a href="https://behance.net" target="_blank" rel="noopener" aria-label="Behance">Behance</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+      <a href="https://discord.com" target="_blank" rel="noopener" aria-label="Discord">Discord</a>
+    </div>
+  </div>
+</footer>
+
+<!-- SMOOTH SCROLL ANCHOR FROM SHOWREEL -->
+<div id="work-anchor" class="sr-only"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
