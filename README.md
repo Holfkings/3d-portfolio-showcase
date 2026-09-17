@@ -1,91 +1,179 @@
-# 3D Artist Portfolio — Web Showcase
+<div align="center">
 
-A single-page static website for a 3D artist/animator portfolio (vanilla HTML/CSS/JS, no frameworks). It serves as an example of a dark, premium web site with light interactivity and responsive design.
+# 🎨 3D Artist Portfolio — Web Showcase
+
+### Dark theme portfolio · HTML/CSS/JS · Interactive · Responsive
+
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Canvas-Interactive-F7DF1E?style=for-the-badge&logo=html5&logoColor=black" alt="Canvas">
+  <img src="https://img.shields.io/badge/Responsive-Yes-grey?style=for-the-badge&logo=mobile&logoColor=white" alt="Responsive">
+  <img src="https://img.shields.io/badge/No_Framework-Pure-grey?style=for-the-badge&logo=clean&logoColor=white" alt="No Framework">
+</p>
+
+</div>
 
 ---
 
-## Stack
+## ✨ What It Is
 
-- Semantic HTML5
-- CSS3 (custom properties, grid, flex, animations, media queries)
-- Vanilla JavaScript (ES6): particle canvas, falling stars canvas, modal system, project filtering, scroll-based active navigation, scroll reveal
-- Google Fonts: Space Grotesk, Sora, Fraunces
-- Placeholder images: picsum.photos (replace with real renders)
+A single-page static website showcasing a 3D artist/animator portfolio. Built with vanilla HTML/CSS/JS — no frameworks. Dark premium theme with light interactivity and fully responsive design.
+
+**A showcase of what's possible with pure web technologies.**
 
 ---
 
-## Structure
+## 🎯 Features
 
+| Section | Description |
+|---------|-------------|
+| **Hero** | Full-screen with interactive particle canvas + overlay + CTAs |
+| **Showreel modal** | YouTube iframe with autoplay (muted) |
+| **Project grid** | 6 filters: All / Character / Environment / Product / Motion / Personal |
+| **Project detail modal** | Hero, year, client, software chips (SVG icons), roles, content blocks, render galleries, turntable/breakdown videos |
+| **About** | Avatar with animated ring, bio, software bars, hardware specs, 6-step process timeline |
+| **Resources** | 3 cards: Free 3D Models / Tutorial Links / Blog |
+| **Contact** | Email, socials (ArtStation/Behance/Instagram/Discord), commission status, rate sheet button |
+| **Background** | Falling stars canvas (twinkle, gold + blue-white) |
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Markup** | HTML5 semantic |
+| **Style** | CSS3 (custom properties, grid, flex, animations, media queries) |
+| **Interactivity** | Vanilla JavaScript ES6 (canvas, modals, filtering, scroll reveal) |
+| **Fonts** | Google Fonts: Space Grotesk, Sora, Fraunces |
+| **Media** | picsum.photos placeholders (replace with real renders) |
+
+---
+
+## 📁 Project Structure
+
+```text
+3d-portfolio-showcase/
+├── index.html          # Main page — all sections
+├── css/
+│   └── styles.css      # All styling — CSS3 custom properties
+├── js/
+│   └── main.js         # Project data + all interactivity
+└── README.md
 ```
-/
-  index.html          main page
-  css/styles.css      all styling
-  js/main.js          project data + interactivity
-  README.md
+
+**Zero dependencies. Zero build tools.**
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Clone
+git clone https://github.com/Holfkings/3d-portfolio-showcase.git
+cd 3d-portfolio-showcase
+
+# Option A — open directly
+# Double-click index.html
+
+# Option B — local server (recommended for autoplay)
+python3 -m http.server 8766
+# Open http://localhost:8766/index.html
 ```
 
 ---
 
-## What the page includes
+## 🎨 Design System
 
-- Full-screen hero with interactive particle canvas + overlay + CTAs
-- Showreel modal (YouTube iframe with autoplay mute)
-- Project grid with 6 filters (All / Character / Environment / Product / Motion / Personal)
-- Project detail modal: hero, year, client, software chips with SVG icons, roles, blocks for Overview / Concept / WIP (wireframe/clay/lighting test) / Final renders gallery / Turntable video / Breakdown video
-- About: avatar with animated ring, bio, software bars, hardware specs, 6-step process timeline, "currently exploring", availability badges
-- Resources: 3 cards (Free 3D Models / Tutorial Links / Blog)
-- Contact: email, socials (ArtStation/Behance/Instagram/Discord), commission status, rate sheet button (generates .txt)
-- Global background with falling stars canvas (twinkle, gold+blue-white)
-- Sticky nav with blur on scroll, active section highlight, hamburger menu on mobile
-
----
-
-## Design
-
-- Dark theme #0c0c0c, gold accent #e8a849
-- Typography: Space Grotesk (display), Sora (body), Fraunces (serif)
-- Hover states on cards, buttons, chips, process cards
-- Animations: fadeUp on hero, ring spin on avatar, scroll reveal on sections, falling stars on background
+| Aspect | Detail |
+|--------|--------|
+| **Background** | Dark #0c0c0c |
+| **Accent** | Gold #e8a849 |
+| **Display font** | Space Grotesk |
+| **Body font** | Sora |
+| **Serif font** | Fraunces |
+| **Hover states** | Cards, buttons, chips, process cards |
+| **Animations** | fadeUp (hero), ring spin (avatar), scroll reveal, falling stars |
 
 ---
 
-## Responsive
+## 📱 Responsive
 
-Yes, mobile-compatible. Media queries at 900px and 540px:
+Yes, fully mobile-compatible. Media queries at **900px** and **540px**:
 
-- Nav becomes hamburger
-- About layout (avatar + text) stacks
-- About columns (Software/Hardware) stack
-- Contact stacks to one column
-- Project grid goes to 1 column
-- Process timeline adapts: no side line on tablet, compact numbers and cards on small phone, title and description reorder for better readability on narrow screens
-- Modals have adjusted padding and height
+| Breakpoint | Behavior |
+|------------|----------|
+| **> 900px** | Full layout, horizontal nav |
+| **900px** | Nav → hamburger, About stacks, columns stack |
+| **540px** | Single column, compact timeline, reordered title/description |
 
 ---
 
-## To customize
+## 🔧 Customization
 
-- Change name/title/bio: edit text in index.html and strings in js/main.js
-- Projects: `projects` array in js/main.js — each entry has id, title, category, filter, year, client, thumb, hoverGif, software, roles, hero, content (HTML string with blocks)
-- Images: replace picsum.photos URLs with real renders for each project
-- Showreel: change the iframe src in index.html to the real Vimeo/YouTube embed
-- Socials and email: edit hrefs in Contact and footer
-- Rate sheet: edit the Blob in the rateSheetBtn listener
-
----
-
-## How to view
-
-**Option 1 — direct file:**
-  Open index.html in the browser (double-click from file explorer).
-  Note: some browsers restrict autoplay on file://, for the showreel it's better to use localhost.
-
-**Option 2 — local server:**
-  python3 -m http.server 8766
-  Open http://localhost:8766/index.html
+| What to change | Where |
+|----------------|-------|
+| Name / title / bio | Edit text in `index.html` and `js/main.js` |
+| Projects | Edit `projects` array in `js/main.js` |
+| Images | Replace picsum URLs with real renders |
+| Showreel | Change iframe `src` in `index.html` |
+| Socials / email | Edit hrefs in Contact and footer |
+| Rate sheet | Edit Blob in `rateSheetBtn` listener |
+| Colors | Edit CSS custom properties in `styles.css` |
 
 ---
 
-## Status
+## 📊 Project Data
 
-Showcase/portfolio version. Data and media are placeholders, the structure, interactivity, and design are complete.
+Projects are defined in `js/main.js` as an array. Each project has:
+
+```javascript
+{
+  id: 1,
+  title: "Project Name",
+  category: "Character",
+  filter: "Character",
+  year: 2024,
+  client: "Client Name",
+  thumb: "thumbnail.jpg",
+  hoverGif: "hover.gif",
+  software: ["Blender", "ZBrush", "Substance Painter"],
+  roles: ["Modeling", "Texturing", "Lighting"],
+  hero: "hero.jpg",
+  content: "..." // HTML string with blocks
+}
+```
+
+---
+
+## 📊 Status
+
+| Metric | Value |
+|--------|-------|
+| **Lines of code** | ~800 HTML + CSS + JS |
+| **Dependencies** | 0 |
+| **Build step** | None |
+| **Pages** | 1 (single-page) |
+| **Media** | Placeholder (replace with real renders) |
+
+---
+
+## 🤝 Contact
+
+| Channel | Link |
+|---------|------|
+| 🐙 **GitHub** | [@Holfkings](https://github.com/Holfkings) |
+
+---
+
+<div align="center">
+
+**Showcase/portfolio version.** Data and media are placeholders — structure, interactivity, and design are complete.
+
+<p align="center" style="color: #888; font-size: 0.85em; margin-top: 24px;">
+  Built with vanilla HTML/CSS/JS · No frameworks · Dark premium theme
+</p>
+
+</div>
