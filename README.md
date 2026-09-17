@@ -1,66 +1,91 @@
 # 3D Artist Portfolio — Web Showcase
 
-Portfolio de un artista 3D/animator, construido como página estática de una sola vez (vanilla HTML/CSS/JS, sin frameworks). Sirve como ejemplo de site web oscuro, premium, con interactividad ligera y diseño responsive.
+A single-page static website for a 3D artist/animator portfolio (vanilla HTML/CSS/JS, no frameworks). It serves as an example of a dark, premium web site with light interactivity and responsive design.
+
+---
 
 ## Stack
-- HTML5 semántico
-- CSS3 (custom properties, grid, flex, animations, media queries)
-- JavaScript vanilla (ES6): canvas de partículas, canvas de estrellas cayendo, sistema de modales, filtrado de proyectos, navegación activa por scroll, scroll reveal
-- Google Fonts: Space Grotesk, Sora, Fraunces
-- Imágenes de placeholder: picsum.photos (reemplazar por renders reales)
 
-## Estructura
+- Semantic HTML5
+- CSS3 (custom properties, grid, flex, animations, media queries)
+- Vanilla JavaScript (ES6): particle canvas, falling stars canvas, modal system, project filtering, scroll-based active navigation, scroll reveal
+- Google Fonts: Space Grotesk, Sora, Fraunces
+- Placeholder images: picsum.photos (replace with real renders)
+
+---
+
+## Structure
+
 ```
 /
-  index.html          vuelta principal
-  css/styles.css      todo el estilo
-  js/main.js          datos de proyectos + interactividad
+  index.html          main page
+  css/styles.css      all styling
+  js/main.js          project data + interactivity
   README.md
 ```
 
-## Qué incluye la página
-- Hero a pantalla completa con canvas interactivo de partículas + overlay + CTAs
-- Showreel modal (iframe de YouTube con autoplay mute)
-- Grid de proyectos con 6 filtros (All / Character / Environment / Product / Motion / Personal)
-- Modal de detalle de proyecto: hero, año, cliente, software chips con iconos SVG, roles, bloques de Overview / Concept / WIP (wireframe/clay/lighting test) / Final renders gallery / Turntable video / Breakdown video
-- About: avatar con anillo animado, bio, barras de software, specs de hardware, timeline de proceso de 6 pasos, "currently exploring", badges de disponibilidad
-- Resources: 3 tarjetas (Free 3D Models / Tutorial Links / Blog)
-- Contact: email, redes (ArtStation/Behance/Instagram/Discord), estado de comisión, botón de rate sheet (genera .txt)
-- Fondo global con canvas de estrellas cayendo (parpadeo, dorado+azul-blanco)
-- Nav sticky con blur al hacer scroll, highlight de sección activa, menú hamburguesa en móvil
+---
 
-## Diseño
-- Tema oscuro #0c0c0c, acento dorado #e8a849
-- Tipografía: Space Grotesk (display), Sora (body), Fraunces (serif)
-- Hover states en tarjetas, botones, chips, tarjetas de proceso
-- Animaciones: fadeUp en hero, ring spin en avatar, scroll reveal en secciones, estrellas cayendo en background
+## What the page includes
+
+- Full-screen hero with interactive particle canvas + overlay + CTAs
+- Showreel modal (YouTube iframe with autoplay mute)
+- Project grid with 6 filters (All / Character / Environment / Product / Motion / Personal)
+- Project detail modal: hero, year, client, software chips with SVG icons, roles, blocks for Overview / Concept / WIP (wireframe/clay/lighting test) / Final renders gallery / Turntable video / Breakdown video
+- About: avatar with animated ring, bio, software bars, hardware specs, 6-step process timeline, "currently exploring", availability badges
+- Resources: 3 cards (Free 3D Models / Tutorial Links / Blog)
+- Contact: email, socials (ArtStation/Behance/Instagram/Discord), commission status, rate sheet button (generates .txt)
+- Global background with falling stars canvas (twinkle, gold+blue-white)
+- Sticky nav with blur on scroll, active section highlight, hamburger menu on mobile
+
+---
+
+## Design
+
+- Dark theme #0c0c0c, gold accent #e8a849
+- Typography: Space Grotesk (display), Sora (body), Fraunces (serif)
+- Hover states on cards, buttons, chips, process cards
+- Animations: fadeUp on hero, ring spin on avatar, scroll reveal on sections, falling stars on background
+
+---
 
 ## Responsive
-Sí, compatible con celular. Hay media queries en 900px y 540px:
-- Nav se convierte en hamburguesa
-- Layout de About (avatar + texto) se apila
-- About columns (Software/Hardware) se apilan
-- Contact se apila a una columna
-- Grid de proyectos pasa a 1 columna
-- Timeline de proceso se adapta: sin línea lateral en tablet, números y tarjetas compactos en celular chico, el título y descripción se reordenan para mejor legibilidad en pantallas estrechas
-- Modales tienen padding y altura ajustada
 
-## Para personalizar
-- Cambiar nombre/título/bio: editar texto en index.html y strings en js/main.js
-- Proyectos: array `projects` en js/main.js — cada entrada tiene id, title, category, filter, year, client, thumb, hoverGif, software, roles, hero, content (HTML string con bloques)
-- Imágenes: reemplazar URLs picsum.photos por renders reales de cada proyecto
-- Showreel: cambiar el src del iframe en index.html por el embed real de Vimeo/YouTube
-- Redes y email: editar hrefs en Contact y footer
-- Rate sheet: editar el Blob en el listener de rateSheetBtn
+Yes, mobile-compatible. Media queries at 900px and 540px:
 
-## Cómo verlo
-Opción 1 — archivo directo:
-  Abrir index.html en el navegador (doble clic desde el explorador).
-  Nota: algunos navegadores restringen autoplay en file://, para el showreelSmooth mejor usar localhost.
+- Nav becomes hamburger
+- About layout (avatar + text) stacks
+- About columns (Software/Hardware) stack
+- Contact stacks to one column
+- Project grid goes to 1 column
+- Process timeline adapts: no side line on tablet, compact numbers and cards on small phone, title and description reorder for better readability on narrow screens
+- Modals have adjusted padding and height
 
-Opción 2 — servidor local:
+---
+
+## To customize
+
+- Change name/title/bio: edit text in index.html and strings in js/main.js
+- Projects: `projects` array in js/main.js — each entry has id, title, category, filter, year, client, thumb, hoverGif, software, roles, hero, content (HTML string with blocks)
+- Images: replace picsum.photos URLs with real renders for each project
+- Showreel: change the iframe src in index.html to the real Vimeo/YouTube embed
+- Socials and email: edit hrefs in Contact and footer
+- Rate sheet: edit the Blob in the rateSheetBtn listener
+
+---
+
+## How to view
+
+**Option 1 — direct file:**
+  Open index.html in the browser (double-click from file explorer).
+  Note: some browsers restrict autoplay on file://, for the showreel it's better to use localhost.
+
+**Option 2 — local server:**
   python3 -m http.server 8766
-  Abrir http://localhost:8766/index.html
+  Open http://localhost:8766/index.html
 
-## Estado
-Versión showcase/portafolio. Los datos y media son placeholder, la estructura, interactividad y diseño están completos.
+---
+
+## Status
+
+Showcase/portfolio version. Data and media are placeholders, the structure, interactivity, and design are complete.
